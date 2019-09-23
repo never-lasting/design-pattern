@@ -23,7 +23,7 @@ public class HungrySingletonTest {
 
 
     // 瑕疵1
-    // 构造器私有并不能安全阻止外部创建对象
+    // 构造器私有并不能完全阻止外部创建对象
     @Test
     public void test2() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
         Class<HungrySingleton> clazz = HungrySingleton.class;
@@ -43,6 +43,7 @@ public class HungrySingletonTest {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filePath));
              ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filePath))) {
             oos.writeObject(instance);
+            oos.flush();
             Object obj = ois.readObject();
             Assert.assertTrue(instance == obj);
         } catch (IOException | ClassNotFoundException e) {
