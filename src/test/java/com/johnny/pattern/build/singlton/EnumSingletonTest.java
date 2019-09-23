@@ -12,7 +12,7 @@ import java.io.*;
  **/
 public class EnumSingletonTest {
 
-    // 测试发序列化问题
+    // 测试反序列化问题
     @Test
     public void test2() {
         EnumSingleton instance = EnumSingleton.SINGLETON_INSTANCE;
